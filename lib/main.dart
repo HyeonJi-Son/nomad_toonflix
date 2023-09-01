@@ -20,13 +20,18 @@ class _AppState extends State<App> { //우리가 UI를 구축하는 곳
   //State의 데이터를 바꾸면 UI는 새로고침되면서 최신 데이터를 보여줌.
   //Stateful Widget의 데이터는 단지, Dart 클래스 프로퍼티이다.
 
-  int counter = 0;
+  // int counter = 0;
+  List<int> numbers = [];
 
   void onClicked(){
     setState(() { //State가 반응해서 데이터가 갱신되면 스스로 새로고침을 하라고 알려주는 함수
       //데이터가 갱신되면 build 메서드를 한 번 더 호출하는 것.
-      counter = counter + 1;
+      // counter = counter + 1;
       //변경되는 데이터를 꼭 setState()함수 내에 넣을 필요는 없지만 코드 가독성을 위해 권장.
+
+      numbers.add(numbers.length);
+      print(numbers);
+
     });
   }
 
@@ -45,12 +50,13 @@ class _AppState extends State<App> { //우리가 UI를 구축하는 곳
                     fontSize: 30
                 ),
               ),
-              Text(
-                '$counter',
-                style: TextStyle(
-                    fontSize: 30
-                ),
-              ),
+              for(var n in numbers) Text('$n'),
+              // Text(
+              //   '$counter',
+              //   style: TextStyle(
+              //       fontSize: 30
+              //   ),
+              // ),
               IconButton(
                   iconSize: 40,
                   onPressed: onClicked,
